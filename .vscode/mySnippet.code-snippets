@@ -1,0 +1,30 @@
+{
+  "Styled Class Name": {
+    "description": "JSX.Element Styled Class Name",
+    "body": "className={classname( [$1] )}",
+    "prefix": "csn",
+    "scope": "typescript, typescriptreact, javascript, javascriptreact"
+  },
+  "Import Styled Class Option": {
+    "description": "import Style and Class Option",
+    "body": [
+      "import { makeClassNameByModuleCSS } from '@/lib/moduleCSS-helper'",
+      "import styles from '${1:./index}.module.${2:s}css'",
+      "",
+      "const { classname } = makeClassNameByModuleCSS( styles )",
+      ""
+    ],
+    "prefix": "csh",
+    "scope": "typescript, typescriptreact, javascript, javascriptreact"
+  },
+  "export default": {
+    "body": "export default $1",
+    "prefix": "ed",
+    "scope": "typescript, typescriptreact, javascript, javascriptreact"
+  },
+  "Functional Component": {
+    "body": ["const ${1:Component} = function () {", "  return <></>", "}"],
+    "prefix": "fc",
+    "scope": "typescript, typescriptreact, javascript, javascriptreact"
+  }
+}
