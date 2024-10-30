@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { Input, InputProps } from '@nextui-org/input'
 
 type props = {
-  value?: React.InputHTMLAttributes<HTMLInputElement>['value']
+  value?: InputProps['value']
   onValueChange?: ( value: string ) => void
   isTabAble?: boolean
 }
@@ -12,30 +12,14 @@ const TextInput = function ( {
   isTabAble: isTabAble = false,
   onValueChange = () => {},
 }: props & {
-  rest?: Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof props>
+  rest?: Omit<InputProps, keyof props>
 } ) {
-  const [_value, _setValue] = useState( value?.toString() || '' )
-
-  // 내부 value 변경 -> 외부 전달
-  useEffect( () => {
-    onValueChange( _value )
-  }, [_value, onValueChange] )
-  // 외부 value 변경 -> 내부 전달
-  useEffect( () => {
-    _setValue( value?.toString() || '' )
-  }, [value] )
-
   return (
-    <input
+    <Input
       type="text"
-      value={_value}
-      onInput={( e ) => {
-        const tempOnInput = rest?.onInput || ( () => {} )
-        tempOnInput( e )
-        const target = e.target as HTMLInputElement
-        _setValue( target.value )
-      }}
-      tabIndex={!isTabAble ? -1 : tabIndex}
+      value={value}
+      tabIndex={isTabAble ? tabIndex : -1}
+      onValueChange={( v ) => onValueChange( v )}
       {...rest}
     />
   )
