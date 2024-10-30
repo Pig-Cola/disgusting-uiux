@@ -8,8 +8,8 @@
   "Import Styled Class Helper": {
     "description": "import Style and Class Helper",
     "body": [
-      "import { makeClassNameByModuleCSS } from '@/lib/moduleCSS-helper'",
       "import styles from '${1:./index}.module.${2:s}css'",
+      "import { makeClassNameByModuleCSS } from '@/lib/moduleCSS-helper'",
       "",
       "const { classname } = makeClassNameByModuleCSS( styles )",
       ""

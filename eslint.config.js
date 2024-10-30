@@ -23,7 +23,7 @@ export default tseslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       '@typescript-eslint/ban-ts-comment': 'off',
       'space-in-parens': [1, 'always'],
-      'import/no-unresolved': 0,
+      'import/no-unresolved': 1,
       'import/order': [
         1,
         {
@@ -77,6 +77,14 @@ export default tseslint.config(
     },
     settings: {
       'import/ignore': ['node_modules'],
+      'import/resolver': {
+        'eslint-import-resolver-custom-alias': {
+          alias: {
+            '@': './src',
+          },
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
     },
   }
 )
