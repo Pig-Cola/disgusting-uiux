@@ -1,3 +1,10 @@
 .main {
-  background-color: red;
+  background-color: inherit;
+}
+
+.hi {
+  max-width: 50px;
+  input {
+    text-align: center;
+  }
 }

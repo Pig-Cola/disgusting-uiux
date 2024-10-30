@@ -1,5 +1,7 @@
 import type { RouteObject, RouteProps } from 'react-router-dom'
-import NotFound from '../pages/_404'
+
+import NotFound from '@/pages/_404'
+import Custom from '@/pages/_pages'
 
 const pages = import.meta.glob( '/src/pages/**/*.ts?(x)', { eager: true, import: 'default' } )
 
@@ -44,7 +46,7 @@ const pages = import.meta.glob( '/src/pages/**/*.ts?(x)', { eager: true, import:
  * |`pages/shop/[[slug]]`|`/shop/a/b`|`{slug: ['a', 'b']}`|
  * |`pages/shop/[[slug]]`|`/shop/a/b/c`|`{slug: ['a', 'b', 'c']}`|
  */
-export const dynamicRoutes = [] as RouteObject[]
+export const dynamicRoutes = [{ path: '/', Component: Custom, children: [] }] as RouteObject[]
 
 for ( const i in pages ) {
   const Component = pages[i] as RouteProps['Component']
@@ -58,7 +60,7 @@ for ( const i in pages ) {
     } )
   const file = pathArr.pop()!
 
-  let target = dynamicRoutes
+  let target = dynamicRoutes[0].children!
   pathArr.forEach( ( { path: targetPath } ) => {
     if ( targetPath === '' ) return
 
@@ -87,4 +89,4 @@ for ( const i in pages ) {
   target.push( { path: '', Component } )
 }
 
-dynamicRoutes.push( { path: '*', Component: NotFound } )
+dynamicRoutes[0].children!.push( { path: '*', Component: NotFound } )
