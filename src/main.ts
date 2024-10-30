@@ -1,11 +1,14 @@
 import { createRoot } from 'react-dom/client'
+
 import App from './app'
 
 declare global {
   interface Array<T> {
+    /** `Immutable`한 함수로 구성해야 한다. */
     touch( fn: ( args?: T[] ) => void ): T[]
   }
   interface ReadonlyArray<T> {
+    /** `Immutable`한 함수로 구성해야 한다. */
     touch( fn: ( args?: T[] ) => void ): T[]
   }
 }

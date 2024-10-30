@@ -1,5 +1,5 @@
-import { makeClassNameByModuleCSS } from '@/lib/moduleCSS-helper'
 import style from './index.module.scss'
+import { makeClassNameByModuleCSS } from '@/lib/moduleCSS-helper'
 // import { useEffect, useState } from 'react'
 
 const { classname } = makeClassNameByModuleCSS( style )

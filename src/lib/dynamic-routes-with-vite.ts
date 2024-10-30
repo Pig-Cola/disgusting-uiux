@@ -1,5 +1,6 @@
 import type { RouteObject, RouteProps } from 'react-router-dom'
-import NotFound from '../pages/_404'
+
+import NotFound from '@/pages/_404'
 
 const pages = import.meta.glob( '/src/pages/**/*.ts?(x)', { eager: true, import: 'default' } )
 
