@@ -1,5 +1,12 @@
+import '@/styles/reset.scss'
+import '@/styles/global.scss'
+import '@/styles/tailwindcss-output.scss'
+
 import { StrictMode } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { NextUIProvider } from '@nextui-org/react'
+
 import { dynamicRoutes } from '@/lib/dynamic-routes-with-vite'
 
 const browserRouter = createBrowserRouter( dynamicRoutes )
@@ -7,7 +14,9 @@ const browserRouter = createBrowserRouter( dynamicRoutes )
 export default function App() {
   return (
     <StrictMode>
-      <RouterProvider router={browserRouter} />
+      <NextUIProvider>
+        <RouterProvider router={browserRouter} />
+      </NextUIProvider>
     </StrictMode>
   )
 }
