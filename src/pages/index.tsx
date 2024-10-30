@@ -1,27 +1,31 @@
+import { Suspense } from 'react'
+
+import TextInput from '@/components/commons/control/text-input/lazy'
+
 import style from './index.module.scss'
 import { makeClassNameByModuleCSS } from '@/lib/moduleCSS-helper'
-// import { useEffect, useState } from 'react'
 
 const { classname } = makeClassNameByModuleCSS( style )
 
 export default function Test() {
-  // const [count, setCount] = useState( 0 )
-  // useEffect( () => {
-  //   if ( count < 100 ) {
-  //     const timer = setTimeout( () => {
-  //       setCount( ( v ) => v + 1 )
-  //     }, 20 )
-
-  //     return () => {
-  //       clearTimeout( timer )
-  //     }
-  //   }
-  // }, [count] )
-
   return (
     <div className={classname( ['main'] )}>
+      <title>hi</title>
       <p>메인 페이지</p>
-      {/* <p>ReRender: {count}</p> */}
+      <br />
+      <br />
+      <br />
+      <p>test</p>
+      <div style={{ width: 500 }}>
+        <Suspense fallback={<></>}>
+          <TextInput
+            rest={{
+              label: 'hi',
+              maxLength: 5,
+            }}
+          />
+        </Suspense>
+      </div>
     </div>
   )
 }
