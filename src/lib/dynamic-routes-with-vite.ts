@@ -1,9 +1,15 @@
+import { lazy } from 'react'
 import type { RouteObject, RouteProps } from 'react-router-dom'
 
-import NotFound from '@/pages/_404'
 import Custom from '@/pages/_pages'
 
-const pages = import.meta.glob( '/src/pages/**/*.ts?(x)', { eager: true, import: 'default' } )
+const NotFound = lazy( () => import( '@/pages/_404' ) )
+
+const pages = import.meta.glob( [
+  '/src/pages/**/*.(j|t)s(x)?',
+  '!/src/pages/_pages.(j|t)s(x)?',
+  '!/src/pages/_404.(j|t)s(x)?',
+] )
 
 /**
  * `Next.js` 의 `pages` router 방식을 참고함.
@@ -49,7 +55,12 @@ const pages = import.meta.glob( '/src/pages/**/*.ts?(x)', { eager: true, import:
 export const dynamicRoutes = [{ path: '/', Component: Custom, children: [] }] as RouteObject[]
 
 for ( const i in pages ) {
-  const Component = pages[i] as RouteProps['Component']
+  const Component = lazy(
+    pages[i] as () => Promise<{
+      default: Exclude<RouteProps['Component'], null | undefined>
+    }>
+  )
+
   const pathArr = i
     .replace( /^.*\/pages\//, '' )
     .replace( /\.(j|t)sx?$/, '' )
@@ -77,7 +88,11 @@ for ( const i in pages ) {
     }
   } )
   if ( file.path === '*' ) {
-    target.push( { path: '*', Component, handle: { originPathName: file.origin } } )
+    target.push( {
+      path: '*',
+      Component: Component,
+      handle: { originPathName: file.origin },
+    } )
     continue
   }
   if ( file.path !== 'index' ) {
@@ -86,7 +101,7 @@ for ( const i in pages ) {
     target = newTemp.children!
   }
 
-  target.push( { path: '', Component } )
+  target.push( { path: '', Component: Component } )
 }
 
 dynamicRoutes[0].children!.push( { path: '*', Component: NotFound } )
