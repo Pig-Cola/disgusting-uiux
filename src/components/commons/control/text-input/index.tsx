@@ -25,4 +25,13 @@ const TextInput = function ( {
   )
 }
 
+TextInput.example = (
+  <TextInput
+    rest={{
+      label: 'hi',
+      maxLength: 5,
+    }}
+  />
+)
+
 export default TextInput

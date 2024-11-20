@@ -82,4 +82,34 @@ const Font = ( { children, isRandomFontFamily = true, isRandomFontSize = false }
   return <>{ch}</>
 }
 
+Font.example = (
+  <div style={{ fontSize: 20 }}>
+    <span>예시1: </span>
+    <Font>
+      <span>
+        안녕하세요 저는 <b>황대성</b> 입니다.
+      </span>
+    </Font>
+    <br />
+    <span>예시2: </span>
+    <Font isRandomFontSize isRandomFontFamily={false}>
+      <span>
+        안녕하세요 저는 <b>황대성</b> 입니다.
+      </span>
+    </Font>
+    <br />
+    <span>예시3: </span>
+    <Font isRandomFontSize>
+      <span>
+        안녕하세요 저는 <b>황대성</b> 입니다.
+      </span>
+    </Font>
+    <br />
+    <span>원본: </span>
+    <span>
+      안녕하세요 저는 <b>황대성</b> 입니다.
+    </span>
+  </div>
+)
+
 export default Font
