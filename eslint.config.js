@@ -4,11 +4,11 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
+  { ignores: ['build/*', '.docusaurus/*'] },
   eslint.configs.recommended,
   tseslint.configs.eslintRecommended,
   tseslint.configs.recommended,
   {
-    ignores: ['/build'],
     plugins: {
       'react-hooks': reactHooksPlugin,
       import: importPlugin,
