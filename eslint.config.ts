@@ -17,6 +17,8 @@ export default tseslint.config(
       'space-in-parens': [1, 'always'],
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-require-imports': 'off',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
       'import/order': [
         1,
         {
@@ -38,9 +40,9 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '@site/src/utill/class-helper',
+              pattern: '@site/src/lib/moduleCSS-helper',
               group: 'sibling',
-              position: 'after',
+              position: 'before',
             },
             {
               pattern: '@site/src/**',
@@ -48,18 +50,18 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '*.(s)?css',
+              pattern: '*.module.(s)?css',
               group: 'index',
               position: 'before',
             },
           ],
           'newlines-between': 'always',
-          pathGroupsExcludedImportTypes: ['react', '@/utill/class-helper', '*.(s)?css'],
+          pathGroupsExcludedImportTypes: ['react', '@site/src/lib/moduleCSS-helper', '*.module.(s)?css'],
           alphabetize: {
             order: 'asc',
             caseInsensitive: true,
           },
-          distinctGroup: true,
+          distinctGroup: false,
         },
       ],
     },

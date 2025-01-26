@@ -3,10 +3,13 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
- 
- /* You can override the default Infima variables here. */
- :root {
-   /* --ifm-color-primary-lightest: #ffa97b;
+
+/* You can override the default Infima variables here. */
+
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Jua&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+:root {
+  /* --ifm-color-primary-lightest: #ffa97b;
    --ifm-color-primary-lighter: #ff8d50;
    --ifm-color-primary-light: #ff8341;
    --ifm-color-primary: #ff7024;
@@ -14,14 +17,14 @@
    --ifm-color-primary-darker: #f75600;
    --ifm-color-primary-darkest: #cc4700; */
 
-   --ifm-color-primary-lightest: #ffbe82;
-   --ifm-color-primary-lighter: #ffa755;
-   --ifm-color-primary-light: #ff9f47;
-   --ifm-color-primary: #ff9029;
-   --ifm-color-primary-dark: #ff810b;
-   --ifm-color-primary-darker: #fc7900;
-   --ifm-color-primary-darkest: #cf6400;
-  
+  --ifm-color-primary-lightest: #ffbe82;
+  --ifm-color-primary-lighter: #ffa755;
+  --ifm-color-primary-light: #ff9f47;
+  --ifm-color-primary: #ff9029;
+  --ifm-color-primary-dark: #ff810b;
+  --ifm-color-primary-darker: #fc7900;
+  --ifm-color-primary-darkest: #cf6400;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
