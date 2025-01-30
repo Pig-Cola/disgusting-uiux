@@ -1,3 +1,5 @@
+import { resolve } from 'node:path'
+
 import { themes as prismThemes } from 'prism-react-renderer'
 
 import type * as Preset from '@docusaurus/preset-classic'
@@ -6,8 +8,8 @@ import type { Config } from '@docusaurus/types'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'disgusting-ux-ui',
+  tagline: '역겨운 사용성을 보면 일단 도망쳐',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -28,9 +30,22 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ko',
+    locales: ['ko'],
   },
+  plugins: [
+    'docusaurus-plugin-sass',
+    () => ( {
+      name: 'my-plugin',
+      configureWebpack: () => ( {
+        resolve: {
+          alias: {
+            '@': resolve( __dirname, 'src' ),
+          },
+        },
+      } ),
+    } ),
+  ],
 
   presets: [
     [
@@ -40,7 +55,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -50,7 +65,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -81,7 +96,7 @@ const config: Config = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/pig-cola/disgusting-uiux',
           label: 'GitHub',
           position: 'right',
         },
