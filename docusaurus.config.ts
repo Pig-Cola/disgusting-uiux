@@ -44,6 +44,11 @@ const config: Config = {
           },
         },
       } ),
+      configurePostCss( options ) {
+        options.plugins.unshift( ...[require( '@tailwindcss/postcss' )] )
+        
+        return options
+      },
     } ),
   ],
 
@@ -72,7 +77,7 @@ const config: Config = {
           onUntruncatedBlogPosts: 'warn',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/tailwind.css','./src/css/custom.css'],
         },
       } satisfies Preset.Options,
     ],
