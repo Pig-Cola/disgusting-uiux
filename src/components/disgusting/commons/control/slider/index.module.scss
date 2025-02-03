@@ -1,0 +1,35 @@
+.test {
+  position: relative;
+
+  .drag1,
+  .drag2 {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 12.5%;
+    min-width: 50px;
+    max-width: 100px;
+
+    cursor: grab;
+
+    -webkit-user-drag: none;
+    user-select: none;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  .drag1 {
+    left: 0;
+  }
+  .drag2 {
+    right: 0;
+  }
+
+  .hi {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
