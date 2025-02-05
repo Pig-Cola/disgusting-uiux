@@ -30,22 +30,22 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '@site/src/hooks/*',
+              pattern: '@/hooks/*',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '@site/src/components/*',
+              pattern: '@/components/*',
               group: 'internal',
               position: 'before',
             },
             {
-              pattern: '@site/src/lib/moduleCSS-helper',
+              pattern: '@/lib/moduleCSS-helper',
               group: 'sibling',
               position: 'before',
             },
             {
-              pattern: '@site/src/**',
+              pattern: '@/**',
               group: 'internal',
               position: 'before',
             },
@@ -56,7 +56,7 @@ export default tseslint.config(
             },
           ],
           'newlines-between': 'always',
-          pathGroupsExcludedImportTypes: ['react', '@site/src/lib/moduleCSS-helper', '*.module.(s)?css'],
+          pathGroupsExcludedImportTypes: ['react', '@/lib/moduleCSS-helper', '*.module.(s)?css'],
           alphabetize: {
             order: 'asc',
             caseInsensitive: true,
