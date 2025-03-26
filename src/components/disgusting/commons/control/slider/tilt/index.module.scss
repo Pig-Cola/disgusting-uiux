@@ -1,6 +1,8 @@
 .test {
   position: relative;
 
+  transition: transform 125ms ease-out;
+
   .drag1,
   .drag2 {
     position: absolute;
