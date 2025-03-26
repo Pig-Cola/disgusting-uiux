@@ -1,3 +1,5 @@
+import { resolve } from 'node:path'
+
 import { themes as prismThemes } from 'prism-react-renderer'
 
 import type * as Preset from '@docusaurus/preset-classic'
@@ -6,8 +8,8 @@ import type { Config } from '@docusaurus/types'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'disgusting-ux-ui',
+  tagline: '역겨운 사용성을 보면 일단 도망쳐',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -28,9 +30,27 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ko',
+    locales: ['ko'],
   },
+  plugins: [
+    'docusaurus-plugin-sass',
+    () => ( {
+      name: 'my-plugin',
+      configureWebpack: () => ( {
+        resolve: {
+          alias: {
+            '@': resolve( __dirname, 'src' ),
+          },
+        },
+      } ),
+      configurePostCss( options ) {
+        options.plugins.unshift( ...[require( '@tailwindcss/postcss' )] )
+
+        return options
+      },
+    } ),
+  ],
 
   presets: [
     [
@@ -40,7 +60,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -50,14 +70,14 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/tailwind.css', './src/css/custom.css'],
         },
       } satisfies Preset.Options,
     ],
@@ -75,18 +95,19 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'customSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/pig-cola/disgusting-uiux',
           label: 'GitHub',
           position: 'right',
         },
       ],
     },
+    docs: { sidebar: { autoCollapseCategories: true } },
     footer: {
       style: 'dark',
       links: [
@@ -94,7 +115,7 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Docs',
               to: '/docs/intro',
             },
           ],
@@ -130,11 +151,11 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} My Project.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
 }
