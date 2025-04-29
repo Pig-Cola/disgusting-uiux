@@ -8,7 +8,7 @@ import type { Config } from '@docusaurus/types'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'disgusting-ux-ui',
+  title: 'disgusting-uiux',
   tagline: '역겨운 사용성을 보면 일단 도망쳐',
   favicon: 'img/favicon.ico',
 
@@ -16,12 +16,12 @@ const config: Config = {
   url: 'https://pig-cola.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/disgusting-ux-ui/',
+  baseUrl: '/disgusting-uiux/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'pig-cola', // Usually your GitHub org/user name.
-  projectName: 'disgusting-ux-ui', // Usually your repo name.
+  projectName: 'disgusting-uiux', // Usually your repo name.
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
