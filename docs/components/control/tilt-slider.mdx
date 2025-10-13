@@ -3,7 +3,7 @@ title: Tilt Slider
 description: 기울기(tilt) 입력을 통한 의도적 불편 슬라이더 데모와 사용 가이드
 ---
 
-import { TiltSlider } from '@site/src/components/disgusting/control/slider/tilt'
+import { TiltSlider, TiltSliderExample } from '@/components/disgusting/control/slider/tilt'
 
 ## 개요 (Overview)
 
@@ -14,21 +14,23 @@ Tilt Slider는 마우스의 위치/각도에 따라 슬라이더 값이 비선�
 아래는 실제 Tilt Slider를 렌더링한 데모입니다. 직접 드래그해 보며 조작 난이도를 체감해 보세요.
 
 <div style={{ padding: 16, border: '1px solid #eaeaea', borderRadius: 8 }}>
-  <TiltSlider />
+  <TiltSliderExample />
   <br />
   <br />
-  <p style={{ fontSize: 12, color: '#666', marginBottom: 'unset' }}>
-    팁: 포인터의 각도/기울기에 따라 값이 더 크게/작게 변화할 수 있습니다.
-  </p>
-  <p style={{ fontSize: 12, color: '#666', marginBottom: 'unset' }}>
-    목표값 맞추기가 어려운 이유(비선형 응답, 각도 영향)를 직접 느껴보세요.
-  </p>
+  {/* prettier-ignore */}
+  <p
+    style={{ fontSize: 12, color: '#666', marginBottom: 'unset' }}
+  >팁: 포인터의 각도/기울기에 따라 값이 더 크게/작게 변화할 수 있습니다.</p>
+  {/* prettier-ignore */}
+  <p
+    style={{ fontSize: 12, color: '#666', marginBottom: 'unset' }}
+  >목표값 맞추기가 어려운 이유(비선형 응답, 각도 영향)를 직접 느껴보세요.</p>
 </div>
 
 ## 사용법 (Usage)
 
 ```tsx
-import { TiltSlider } from '@site/src/components/disgusting/control/slider/tilt'
+import { TiltSlider } from '@/components/disgusting/control/slider/tilt'
 
 export default function Example() {
   return <TiltSlider />
