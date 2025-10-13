@@ -1,4 +1,4 @@
-.test {
+.tilt-slider {
   position: relative;
 
   transition: transform 125ms ease-out;
@@ -30,7 +30,22 @@
     right: 0;
   }
 
-  .hi {
+  .drag-area {
+    opacity: 0;
+
+    backdrop-filter: invert(35%) sepia(1) saturate(1.5) hue-rotate(90deg) contrast(1.5) opacity(0.75);
+    border-radius: calc(infinity * 1px);
+
+    transform: scale(1.1, 1.5);
+
+    transition: opacity 250ms ease-in;
+  }
+
+  &:hover .drag-area {
+    opacity: 1;
+  }
+
+  .progress {
     -webkit-user-drag: none;
     user-select: none;
   }

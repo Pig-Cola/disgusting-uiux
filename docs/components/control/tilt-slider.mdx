@@ -1,0 +1,102 @@
+---
+title: Tilt Slider
+description: 기울기(tilt) 입력을 통한 의도적 불편 슬라이더 데모와 사용 가이드
+---
+
+import { TiltSlider, TiltSliderExample } from '@/components/disgusting/control/slider/tilt'
+
+## 개요 (Overview)
+
+Tilt Slider는 마우스의 위치/각도에 따라 슬라이더 값이 비선형적으로 변하도록 만든, 의도적으로 불편한 컴포넌트입니다. 사용자는 목표 값을 맞추기 어렵고, 조작 중 값이 쉽게 튀는 경험을 하게 됩니다.
+
+## 데모 (Demo)
+
+아래는 실제 Tilt Slider를 렌더링한 데모입니다. 직접 드래그해 보며 조작 난이도를 체감해 보세요.
+
+<div style={{ padding: 16, border: '1px solid #eaeaea', borderRadius: 8 }}>
+  <TiltSliderExample />
+  <br />
+  <br />
+  {/* prettier-ignore */}
+  <p
+    style={{ fontSize: 12, color: '#666', marginBottom: 'unset' }}
+  >팁: 포인터의 각도/기울기에 따라 값이 더 크게/작게 변화할 수 있습니다.</p>
+  {/* prettier-ignore */}
+  <p
+    style={{ fontSize: 12, color: '#666', marginBottom: 'unset' }}
+  >목표값 맞추기가 어려운 이유(비선형 응답, 각도 영향)를 직접 느껴보세요.</p>
+</div>
+
+## 사용법 (Usage)
+
+```tsx
+import { TiltSlider } from '@/components/disgusting/control/slider/tilt'
+
+export default function Example() {
+  return <TiltSlider />
+}
+```
+
+## 왜 불편한가 (Why it's uncomfortable)
+
+- 직관적 컨트롤이 어려움: 수평 드래그만으로 제어되지 않고, 기울기 정보가 값에 영향을 줍니다.
+- 비선형 응답: 같은 이동량이라도 각도에 따라 값 변화량이 달라 예측이 어렵습니다.
+- 작은 실수의 큰 영향: 마우스를 약간만 흔들어도 값이 크게 튀어 목표값에 맞추기 어렵습니다.
+
+<br />
+
+---
+
+<br />
+
+## 세부 정보 (Details)
+
+### 세부 Demo
+
+<TiltSlider />
+
+### 각 props의 역할 및 type, 값에 대한 설명
+
+#### sensitivity (number)
+
+- default: 0.3, range: 0.1 ~ 1
+- 기울기 민감도(각도 변화가 값에 미치는 영향 비율)
+
+#### defaultPercent (number)
+
+- default: 50, range: 0 ~ 100
+- 초기 퍼센트 값
+
+#### style (object)
+
+- `{ wrapper?: CSSProperties; progress?: CSSProperties }`
+- 래퍼와 프로그레스 바 스타일 커스터마이즈
+
+#### onChangeValue (function)
+
+- 값 변화 시마다 호출되는 콜백 `(value: number) => void`
+- `value`: 0 ~ 100 사이의 값을 반환합니다. (소수점 포함)
+
+#### onCommitValue (function)
+
+- 드래그 종료 시 최종 값으로 호출되는 콜백 `(value: number) => void`
+- `value`: 0 ~ 100 사이의 값을 반환합니다. (소수점 포함)
+
+## 동작 원리 (How it works)
+
+- 포인터 위치와 이동 각도를 추정해 "기울기 계수"를 계산합니다.
+- 이 계수는 값 변화량에 비선형 가중치로 적용됩니다.
+- 결과적으로 사용자는 단순히 좌우로만 움직여도 각도 변화로 인해 값이 예상과 다르게 변합니다.
+
+## 개선 아이디어 (Improvement ideas)
+
+- 선형 응답 옵션 제공: 기울기 가중치가 아닌 선형 응답으로 변경
+- 스냅(snap) 추가: 특정 간격으로 값이 정렬되도록 하여 조작 난이도 완화
+- 키보드 보조 입력: ArrowLeft/Right, PageUp/Down으로 미세 조정
+- 접근성(A11y): 레이블/역할/포커스 순서/키보드 조작 지원 강화
+
+## 주요 포인트 정리 (Key takeaways)
+
+- 의도적 불편: 비선형 + 각도 영향 → 예측 어려움
+- 학습 목적: 나쁜 UX 패턴을 체험하며 개선 방향을 도출
+- 개선 방향: 선형화, 스냅, 키보드 보조, 접근성 강화
